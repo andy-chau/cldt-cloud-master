@@ -20,10 +20,6 @@ spring:
     min-idle: 10
     max-active: 20
     test-on-borrow: true
-eureka:
-  client:
-    serviceUrl:
-      defaultZone: http://root:root@localhost:8761/eureka/
 cldt:
   server:
     eureka:
