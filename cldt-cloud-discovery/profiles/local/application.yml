@@ -1,0 +1,27 @@
+server:
+  port: 8080
+spring:
+  profiles:
+    active: @profileActive@
+  application:
+    name: @pom.artifactId@
+info:
+  owner: zhoukj
+  version: @project.version@
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: http://root:root_lcl@127.0.0.1:8761/eureka/
+    instance:
+      instance-id: ${spring.application.name}:${spring.cloud.client.ipAddress}:${server.port}
+      prefer-ip-address: true
+security: # 配置中心的用户名密码
+  basic:
+    enabled: true
+  user:
+    name: admin
+    password: admin_lcl
+logging:
+  level.root: info
+  path: logs/
+  file: ${spring.application.name}.log

@@ -1,6 +1,6 @@
 spring:
   profiles:
-    active: pro
+    active: prod
   rabbitmq:
     host: 47.96.173.142
     port: 5672

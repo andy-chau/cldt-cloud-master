@@ -1,0 +1,19 @@
+spring:
+  cloud:
+    config:
+      fail-fast: true
+      discovery:
+        service-id: cldt-cloud-discovery
+        enabled: true
+      label: ${spring.profiles.active}
+      profile: ${spring.profiles.active}
+      username: admin
+      password: admin_lcl
+
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: http://root:root_lcl@127.0.0.1:8761/eureka/
+    instance:
+      instance-id: ${spring.application.name}:${spring.cloud.client.ipAddress}:${server.port}
+      prefer-ip-address: true
