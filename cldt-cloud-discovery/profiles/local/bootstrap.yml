@@ -1,0 +1,20 @@
+spring:
+  profiles:
+    active: native
+  cloud:
+    config:
+      server:
+        native:
+          searchLocations: ./conf
+    inetutils:
+      ignoredInterfaces:
+        - docker0
+        - veth.*
+      preferredNetworks:
+        - 192.168
+encrypt:
+  key-store:
+    location: classpath:/config-service.jks
+    password: cldtcloud_stp
+    alias: cldtcloudky
+    secret: cldtcloud_kp
