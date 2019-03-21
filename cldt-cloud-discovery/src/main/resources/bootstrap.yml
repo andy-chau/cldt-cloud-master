@@ -1,0 +1,20 @@
+spring:
+  profiles:
+    active: native
+  cloud:
+    config:
+      server:
+        native:
+          searchLocations: ./conf
+    inetutils:
+      ignoredInterfaces:
+        - docker0
+        - veth.*
+      preferredNetworks:
+        - 192.168
+encrypt:
+  key-store:
+    location: classpath:/server.jks
+    password: paascloud-storepass
+    alias: paascloud-key-store
+    secret: paascloud-keypass

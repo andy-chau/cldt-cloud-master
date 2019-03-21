@@ -1,0 +1,11 @@
+CREATE TABLE IF NOT EXISTS `gateway_api_define` (
+  `id` VARCHAR(50) NOT NULL,
+  `path` VARCHAR(255) NOT NULL,
+  `service_id` VARCHAR(50) DEFAULT NULL,
+  `url` VARCHAR(255) DEFAULT NULL,
+  `retryable` TINYINT(1) DEFAULT NULL,
+  `enabled` TINYINT(1) NOT NULL,
+  `strip_prefix` INT(11) DEFAULT NULL,
+  `api_name` VARCHAR(255) DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=INNODB ROW_FORMAT=COMPRESSED CHARACTER SET=utf8 COLLATE utf8_general_ci;

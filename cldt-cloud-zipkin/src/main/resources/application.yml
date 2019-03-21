@@ -1,0 +1,79 @@
+server:
+  port: 8020
+spring:
+  profiles:
+    active: @profileActive@
+  application:
+    name: @pom.artifactId@
+  boot:
+    admin:
+      username: ${security.user.name:admin}
+      password: ${security.user.password:admin}
+  redis:
+    host: ${spring.redis.host:localhost}
+    password: ${spring.redis.password:123456}
+    port: ${spring.redis.port:6379}
+    timeout: ${spring.redis.timeout:0}
+  datasource:
+    driver-class-name: com.mysql.jdbc.Driver
+    url: jdbc:mysql://localhost:3306/guandianbao_zipkin?characterEncoding=utf8&useSSL=false
+    username: ${spring.datasource.username:root}
+    password: ${spring.datasource.password:root}
+    druid:
+      initial-size: 10
+      min-idle: 10
+      max-active: 30
+      test-on-borrow: true
+      stat-view-servlet:
+        allow:
+  rabbitmq:
+    host: paascloud-mq-rabbit
+    port: 5672
+    username: yangwensheng
+    password: 123456
+  sleuth:
+    enabled: false
+  zipkin:
+    locator:
+      discovery:
+        enabled: true
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: ${guandianbao.server.eureka.serviceUrl}
+    instance:
+      instance-id: ${spring.application.name}:${spring.cloud.client.ipAddress}:${server.port}
+zipkin:
+  storage:
+    type: mysql
+management:
+  security:
+    enabled: false
+info:
+  owner: zhoukj
+  version: @project.version@
+security:
+  oauth2:
+    client:
+      clientId: guandianbao-client-zipkin
+      clientSecret: paascloudClientSecret
+      access-token-uri: http://localhost:7979/uac/oauth/token
+      user-authorization-uri: http://localhost:7979/uac/oauth/authorize
+    resource:
+      user-info-uri: http://localhost:8000/user
+      prefer-token-info: false
+      jwt:
+        key-uri: http://localhost:8000/oauth/token_key
+guandianbao:
+  oauth2:
+    client:
+      id: ${security.oauth2.resource.id}
+      accessTokenUrl: ${security.oauth2.client.access-token-uri}
+      clientId: ${security.oauth2.client.clientId}
+      clientSecret: ${security.oauth2.client.clientSecret}
+      clientAuthenticationScheme: header
+      tokenStore: jwt
+logging:
+  level.root: info
+  path: logs/
+  file: ${spring.application.name}.log
