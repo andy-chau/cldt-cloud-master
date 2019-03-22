@@ -25,7 +25,7 @@ cldt:
     eureka:
       port: 8761
       hostname: localhost
-      serviceUrl: http://root:root@localhost:8761/eureka/
+      serviceUrl: http://root:root_lcl@localhost:8761/eureka/
     discovery:
       port: 8080
       hostname: localhost

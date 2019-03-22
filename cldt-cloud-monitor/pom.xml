@@ -33,6 +33,10 @@
       <artifactId>spring-cloud-starter-turbine</artifactId>
     </dependency>
     <dependency>
+      <groupId>org.springframework.cloud</groupId>
+      <artifactId>spring-cloud-starter-netflix-eureka-client</artifactId>
+    </dependency>
+    <dependency>
       <groupId>de.codecentric</groupId>
       <artifactId>spring-boot-admin-server</artifactId>
     </dependency>
@@ -124,29 +128,16 @@
         </configuration>
       </plugin>
     </plugins>
+      <resources>
+        <resource>
+          <directory>src/main/resources</directory>
+          <filtering>true</filtering>
+        </resource>
+        <resource>  
+          <directory>profiles/${profileActive}</directory>
+          <filtering>true</filtering>
+        </resource>  
+      </resources>
   </build>
 
-  <profiles>
-    <profile>
-      <id>local</id>
-      <properties>
-        <profileActive>local</profileActive>
-      </properties>
-      <activation>
-        <activeByDefault>true</activeByDefault>
-      </activation>
-    </profile>
-    <profile>
-      <id>dev</id>
-      <properties>
-        <profileActive>dev</profileActive>
-      </properties>
-    </profile>
-    <profile>
-      <id>prod</id>
-      <properties>
-        <profileActive>prod</profileActive>
-      </properties>
-    </profile>
-  </profiles>
 </project>

@@ -1,0 +1,34 @@
+spring:
+  boot:
+    admin:
+      client:
+        metadata:
+          user:
+            name: ${security.user.name}
+            password: ${security.user.password}
+      monitor:
+        period: 60000
+      discovery:
+        enabled: true
+      notify:
+        mail:
+          to: 690590765@qq.com
+          from: 690590765@qq.com
+          enabled: true
+      turbine:
+        clusters: default
+        location: cldt-cloud-monitor
+      routes:
+        endpoints: env,metrics,dump,jolokia,info,configprops,trace,logfile,refresh,flyway,liquibase,heapdump,loggers,auditevents,hystrix.stream
+
+security:
+  user:
+    name: admin
+    password: admin_dev
+  basic:
+    enabled: false
+
+turbine:
+  app-config: cldt-cloud-gateway #收集监控信息的服务名
+  combine-host-port: true
+  cluster-name-expression: new String('default') #集群名称
