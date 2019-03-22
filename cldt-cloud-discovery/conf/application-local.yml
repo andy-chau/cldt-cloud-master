@@ -20,6 +20,11 @@ spring:
     min-idle: 10
     max-active: 20
     test-on-borrow: true
+  mail:
+    host: smtp.qq.com
+    password: jtxhgopdrwcabbef
+    port: 25
+    username: 690590765
 cldt:
   server:
     eureka:

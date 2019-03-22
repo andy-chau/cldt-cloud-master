@@ -29,7 +29,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 		http.csrf().disable();
 
 		// Requests for the login page and the static assets are allowed
-		http.authorizeRequests().antMatchers("/login.html", "/**/*.css", "/img/**", "/third-party/**").permitAll();
+		http.authorizeRequests().antMatchers("/api/**", "/applications/**", "/api/applications/**", "/login.html", "/**/*.css", "/img/**", "/third-party/**").permitAll();
 		// ... and any other request needs to be authorized
 		http.authorizeRequests().antMatchers("/**").authenticated();
 
