@@ -25,6 +25,9 @@ security: # 配置中心的用户名密码
   user:
     name: admin
     password: admin_lcl
+management:
+  security:
+    enabled: false
 logging:
   level.root: info
   path: logs/
