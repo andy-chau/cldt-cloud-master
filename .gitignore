@@ -24,6 +24,8 @@ bin/
 *.diff
 *.patch
 *.tmp
+logs/
+LOG_*
 
 # system ignore
 .DS_Store
