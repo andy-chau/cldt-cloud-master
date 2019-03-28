@@ -10,6 +10,8 @@ import org.springframework.web.cors.CorsConfiguration;
 import org.springframework.web.cors.UrlBasedCorsConfigurationSource;
 import org.springframework.web.filter.CorsFilter;
 
+import com.didispace.swagger.butler.EnableSwaggerButler;
+
 /**
  * The class Paas cloud gateway application.
  *
@@ -20,6 +22,7 @@ import org.springframework.web.filter.CorsFilter;
 @EnableZuulProxy
 //@EnableOAuth2Sso
 @EnableHystrix
+@EnableSwaggerButler
 public class FrontGatewayApplication {
 
 	public static void main(String[] args) {

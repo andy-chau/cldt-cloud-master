@@ -44,6 +44,26 @@
         <artifactId>fastjson</artifactId>
         <version>${fastjson.version}</version>
       </dependency>
+      <dependency>
+        <groupId>com.cldt.common</groupId>
+        <artifactId>cldt-common-util</artifactId>
+        <version>${cldt.common.version}</version>
+      </dependency>
+      <dependency>
+        <groupId>com.cldt.common</groupId>
+        <artifactId>cldt-common-core</artifactId>
+        <version>${cldt.common.version}</version>
+      </dependency>
+      <dependency>
+        <groupId>com.cldt.common</groupId>
+        <artifactId>cldt-common-base</artifactId>
+        <version>${cldt.common.version}</version>
+      </dependency>
+      <dependency>
+        <groupId>com.cldt.common</groupId>
+        <artifactId>cldt-security-app</artifactId>
+        <version>${cldt.common.version}</version>
+      </dependency>
     </dependencies>
   </dependencyManagement>
 
@@ -53,35 +73,11 @@
         <groupId>org.apache.maven.plugins</groupId>
         <artifactId>maven-compiler-plugin</artifactId>
         <configuration>
-          <source>1.7</source>
-          <target>1.7</target>
+          <source>1.8</source>
+          <target>1.8</target>
           <encoding>UTF-8</encoding>
         </configuration>
       </plugin>
     </plugins>
   </build>
-
-  <profiles>
-    <profile>
-      <id>local</id>
-      <properties>
-        <profileActive>local</profileActive>
-      </properties>
-      <activation>
-        <activeByDefault>true</activeByDefault>
-      </activation>
-    </profile>
-    <profile>
-      <id>dev</id>
-      <properties>
-        <profileActive>dev</profileActive>
-      </properties>
-    </profile>
-    <profile>
-      <id>prod</id>
-      <properties>
-        <profileActive>prod</profileActive>
-      </properties>
-    </profile>
-  </profiles>
 </project>

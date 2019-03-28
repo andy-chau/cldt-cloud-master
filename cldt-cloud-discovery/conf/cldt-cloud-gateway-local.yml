@@ -15,36 +15,10 @@ zuul:
   forceOriginalQueryStringEncoding: true
   routes:
     uac-route:
-      path: /v1/uac/**
+      path: /uac/**
       sensitiveHeaders:
       strip-prefix: true
-      service-id: guandianbao-provider-uac
-      ribbon:
-        eager-load:
-          enabled: true
-        MaxAutoRetries: 1
-        MaxAutoRetriesNextServer: 2
-        OkToRetryOnAllOperations: false
-        ConnectTimeout: 10000
-        ReadTimeout: 10000
-    uac2-route:
-      path: /v3/uac/**
-      sensitiveHeaders:
-      strip-prefix: true
-      service-id: guandianbao-provider-uac
-      ribbon:
-        eager-load:
-          enabled: true
-        MaxAutoRetries: 1
-        MaxAutoRetriesNextServer: 2
-        OkToRetryOnAllOperations: false
-        ConnectTimeout: 10000
-        ReadTimeout: 10000
-    promo-route:
-      path: /v1/promo/**
-      sensitiveHeaders:
-      strip-prefix: true
-      service-id: guandianbao-provider-promo
+      service-id: cldt-provider-uac-service
       ribbon:
         eager-load:
           enabled: true
@@ -55,3 +29,30 @@ zuul:
         ReadTimeout: 10000
   add-proxy-headers: true
   add-host-header: true
+#security:
+#  oauth2:
+#    client:
+#      clientId: cldt-client-gateway
+#      clientSecret: cldtClientSecret
+#      access-token-uri: http://cldt-cloud-gateway:7979/uac/oauth/token
+#      user-authorization-uri: http://cldt-cloud-gateway:7979/uac/oauth/authorize
+#    resource:
+#      user-info-uri: http://cldt-cloud-gateway:7979/uac/user
+#      prefer-token-info: false
+#      jwt:
+#        key-uri: http://cldt-provider-uac-service:8000/oauth/token_key
+
+proxy:
+  auth:
+    routes:
+      uac-route: oauth2
+
+cldt:
+  enableSqlLogInterceptor: false
+# swagger butler配置
+swagger.butler:
+  api-docs-path: v2/api-docs
+  swagger-version: 1.0
+  auto-generate-from-zuul-routes: true
+  # 指定要生成的范围
+  generate-routes: uac-route

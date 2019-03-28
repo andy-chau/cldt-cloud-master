@@ -1,11 +1,19 @@
+server:
+  tomcat:
+    uri-encoding: UTF-8
+    remote-ip-header: x-forwarded-for
+  use-forward-headers: true
+
+management:
+  security:
+    enabled: false
+
 spring:
-  profiles:
-    active: local
-  rabbitmq:
-    host: 47.96.173.142
-    port: 5672
-    username: guest
-    password: guest
+#  rabbitmq:
+#    host: 47.96.173.142
+#    port: 5672
+#    username: guest
+#    password: guest
   redis:
     host: 127.0.0.1
     password:
@@ -13,8 +21,8 @@ spring:
     timeout: 0
   datasource:
     driver-class-name: com.mysql.jdbc.Driver
-    username: root
-    password: root
+    username: yunt
+    password: zkj0307
     type: com.alibaba.druid.pool.DruidDataSource
     initial-size: 10
     min-idle: 10
@@ -25,50 +33,42 @@ spring:
     password: jtxhgopdrwcabbef
     port: 25
     username: 690590765
+  boot:
+    admin:
+      username: admin
+      password: admin_lcl
+  zipkin:
+    rabbitmq:
+      queue: zipkin
+  sleuth:
+    sampler:
+      percentage: 0.2
+feign:
+  hystrix:
+    enabled: true
+  client:
+    config:
+      default:
+        connectTimeout: 5000
+        readTimeout: 5000
+ribbon:
+  eager-load:
+    enabled: true
+  MaxAutoRetries: 1
+  MaxAutoRetriesNextServer: 2
+  OkToRetryOnAllOperations: false
+  ConnectTimeout: 60000
+  ReadTimeout: 20000
+hystrix:
+  command:
+    default:
+      execution:
+        timeout:
+          enabled: true
+        isolation:
+          thread:
+            timeoutInMilliseconds: 20000
 cldt:
-  server:
-    eureka:
-      port: 8761
-      hostname: localhost
-      serviceUrl: http://root:root_lcl@localhost:8761/eureka/
-    discovery:
-      port: 8080
-      hostname: localhost
-      serviceUrl: http://admin:admin@localhost:8080
-    gateway:
-      port: 80
-      hostname: localhost
-    monitor:
-      port: 8010
-      hostname: localhost
-      serviceUrl: http://localhost:8010
-    zipkin:
-      port: 8020
-      hostname: localhost
-      serviceUrl: http://localhost:8020
-    provider:
-      ehc:
-        port: 8040
-        hostname: localhost
-      mdc:
-        port: 8030
-        hostname: localhost
-      omc:
-        port: 8050
-        hostname: localhost
-      opc:
-        port: 8070
-        hostname: localhost
-      ptc:
-        port: 8060
-        hostname: localhost
-      uac:
-        port: 8000
-        hostname: localhost
-    web:
-      mall:
-        port: 9000
-        hostname: localhost
   auth:
     jwt:
       expiredRemainMinutes: 20
@@ -122,5 +122,7 @@ cldt:
       registry:
         address: zookeeper://119.23.48.142:2181
         group: dubboservice/guandbService/dev-group
+  zk:
+    zkAddressList: 119.23.48.142:2181
   swagger2:
     show: true
