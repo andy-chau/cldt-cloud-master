@@ -18,7 +18,7 @@ spring:
     host: localhost
     password: yunt!@#159
     port: 6379
-    timeout: 0
+    timeout: 60000
   datasource:
     driver-class-name: com.mysql.jdbc.Driver
     username: yunt
