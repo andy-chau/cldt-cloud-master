@@ -50,7 +50,7 @@
             <artifactId>spring-cloud-starter-security</artifactId>
         </dependency>
 
-        <!-- <dependency>
+        <dependency>
             <groupId>org.springframework.cloud</groupId>
             <artifactId>spring-cloud-starter-oauth2</artifactId>
         </dependency>
@@ -58,7 +58,7 @@
         <dependency>
             <groupId>org.springframework.security</groupId>
             <artifactId>spring-security-jwt</artifactId>
-        </dependency> -->
+        </dependency>
         <!-- swagger2聚合网关 -->
         <dependency>
             <groupId>com.didispace</groupId>

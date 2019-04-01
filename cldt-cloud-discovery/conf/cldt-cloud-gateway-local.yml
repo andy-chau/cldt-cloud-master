@@ -29,18 +29,18 @@ zuul:
         ReadTimeout: 10000
   add-proxy-headers: true
   add-host-header: true
-#security:
-#  oauth2:
-#    client:
-#      clientId: cldt-client-gateway
-#      clientSecret: cldtClientSecret
-#      access-token-uri: http://cldt-cloud-gateway:7979/uac/oauth/token
-#      user-authorization-uri: http://cldt-cloud-gateway:7979/uac/oauth/authorize
-#    resource:
-#      user-info-uri: http://cldt-cloud-gateway:7979/uac/user
-#      prefer-token-info: false
-#      jwt:
-#        key-uri: http://cldt-provider-uac-service:8000/oauth/token_key
+security:
+  oauth2:
+    client:
+      clientId: cldt-client-gateway
+      clientSecret: cldtClientSecret
+      access-token-uri: http://cldt-cloud-gateway:7979/uac/oauth/token
+      user-authorization-uri: http://cldt-cloud-gateway:7979/uac/oauth/authorize
+    resource:
+      user-info-uri: http://cldt-cloud-gateway:7979/uac/user
+      prefer-token-info: false
+      jwt:
+        key-uri: http://cldt-provider-uac-service:8000/oauth/token_key
 
 proxy:
   auth:
@@ -49,6 +49,9 @@ proxy:
 
 cldt:
   enableSqlLogInterceptor: false
+  security:
+    oauth2:
+      tokenStore: redis
 # swagger butler配置
 swagger.butler:
   api-docs-path: v2/api-docs

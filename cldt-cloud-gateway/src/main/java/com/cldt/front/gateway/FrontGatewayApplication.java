@@ -2,6 +2,7 @@ package com.cldt.front.gateway;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.boot.autoconfigure.security.oauth2.client.EnableOAuth2Sso;
 import org.springframework.cloud.client.discovery.EnableDiscoveryClient;
 import org.springframework.cloud.netflix.hystrix.EnableHystrix;
 import org.springframework.cloud.netflix.zuul.EnableZuulProxy;
@@ -20,7 +21,7 @@ import com.didispace.swagger.butler.EnableSwaggerButler;
 @SpringBootApplication
 @EnableDiscoveryClient
 @EnableZuulProxy
-//@EnableOAuth2Sso
+@EnableOAuth2Sso
 @EnableHystrix
 @EnableSwaggerButler
 public class FrontGatewayApplication {

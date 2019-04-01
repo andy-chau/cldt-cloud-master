@@ -11,32 +11,35 @@
 
 package com.cldt.front.gateway.filter;
 
+import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 
 import lombok.extern.slf4j.Slf4j;
 
 import org.apache.commons.lang.StringUtils;
 import org.springframework.http.HttpHeaders;
+import org.springframework.security.oauth2.common.OAuth2AccessToken;
+import org.springframework.security.oauth2.provider.token.store.JwtTokenStore;
+import org.springframework.stereotype.Component;
 
 import com.cldt.base.enums.ErrorCodeEnum;
 import com.cldt.base.exception.BusinessException;
 import com.netflix.zuul.ZuulFilter;
 import com.netflix.zuul.context.RequestContext;
-//import org.springframework.security.oauth2.common.OAuth2AccessToken;
-//import org.springframework.security.oauth2.provider.token.store.JwtTokenStore;
 
 /**
  * The class Renew filter.
  *
  * @author cldt
  */
-//@Component
+@Component
 @Slf4j
 public class RenewFilter extends ZuulFilter {
 
-//	@Resource
-//	private JwtTokenStore jwtTokenStore;
-//	private static final int EXPIRES_IN = 60 * 20;
+	@Resource
+	private JwtTokenStore jwtTokenStore;
+	private static final int EXPIRES_IN = 60 * 20;
 
 	/**
 	 * Filter type string.
@@ -92,13 +95,13 @@ public class RenewFilter extends ZuulFilter {
 		if (StringUtils.isEmpty(token)) {
 			return;
 		}
-//		OAuth2AccessToken oAuth2AccessToken = jwtTokenStore.readAccessToken(token);
-//		int expiresIn = oAuth2AccessToken.getExpiresIn();
-//
-//		if (expiresIn < EXPIRES_IN) {
-//			HttpServletResponse servletResponse = requestContext.getResponse();
-//			servletResponse.addHeader("Renew-Header", "true");
-//		}
+		OAuth2AccessToken oAuth2AccessToken = jwtTokenStore.readAccessToken(token);
+		int expiresIn = oAuth2AccessToken.getExpiresIn();
+
+		if (expiresIn < EXPIRES_IN) {
+			HttpServletResponse servletResponse = requestContext.getResponse();
+			servletResponse.addHeader("Renew-Header", "true");
+		}
 	}
 
 }
