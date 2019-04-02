@@ -6,7 +6,7 @@ import org.springframework.cloud.netflix.eureka.EnableEurekaClient;
 import org.springframework.cloud.sleuth.zipkin.stream.EnableZipkinStreamServer;
 
 /**
- * The class Paas cloud zipkin application.
+ * The class cldt zipkin application.
  *
  * @author zhoukj
  */

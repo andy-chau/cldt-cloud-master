@@ -14,7 +14,7 @@ import org.springframework.web.filter.CorsFilter;
 import com.didispace.swagger.butler.EnableSwaggerButler;
 
 /**
- * The class Paas cloud gateway application.
+ * The class cldt gateway application.
  *
  * @author zhoukj
  */
