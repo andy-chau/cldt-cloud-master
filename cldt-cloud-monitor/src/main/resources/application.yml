@@ -1,5 +1,6 @@
 server:
-  port: ${cldt.server.monitor.port:8010}
+  port: 8010
+  context-path: /
 spring:
   application:
     name: @pom.artifactId@

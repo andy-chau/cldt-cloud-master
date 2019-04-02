@@ -1,0 +1,43 @@
+spring:
+  datasource:
+    url: jdbc:mysql://182.92.177.76:3306/cldt_zipkin?characterEncoding=utf8&useSSL=false
+    schema: classpath:/mysql.sql
+  sleuth:
+    enabled: false
+  zipkin:
+    locator:
+      discovery:
+        enabled: true
+
+zipkin:
+  collector:
+    rabbitmq:
+      addresses: 127.0.0.1:5672
+      username: guest
+      password: guest
+      queue: zipkin
+  storage:
+    type: mysql
+
+security:
+  oauth2:
+    client:
+      clientId: cldt-client-zipkin
+      clientSecret: cldtClientSecret
+      access-token-uri: http://cldt-cloud-gateway:7979/uac/oauth/token
+      user-authorization-uri: http://cldt-cloud-gateway:7979/uac/oauth/authorize
+    resource:
+      user-info-uri: http://cldt-cloud-gateway:7979/uac/user
+      prefer-token-info: false
+      jwt:
+        key-uri: http://cldt-provider-uac-service:8000/oauth/token_key
+
+cldt:
+  oauth2:
+    client:
+      id: ${security.oauth2.resource.id}
+      accessTokenUrl: ${security.oauth2.client.access-token-uri}
+      clientId: ${security.oauth2.client.clientId}
+      clientSecret: ${security.oauth2.client.clientSecret}
+      clientAuthenticationScheme: header
+      tokenStore: jwt

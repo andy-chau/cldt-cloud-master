@@ -5,10 +5,6 @@ spring:
     active: @profileActive@
   application:
     name: @pom.artifactId@
-  boot:
-    admin:
-      username: admin
-      password: admin_lcl
 info:
   owner: zhoukj
   version: @project.version@
