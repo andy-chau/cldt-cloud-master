@@ -1,0 +1,1 @@
+keytool -genkeypair -alias cldtcloudky -keyalg RSA -dname "CN=Web Server,OU=China,O=cldt.com,L=Shenzhen,S=Shenzhen,C=China" -keypass cldtcloud_kp -keystore config-service.jks -storepass cldtcloud_stp
